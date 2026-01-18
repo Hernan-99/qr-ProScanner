@@ -1,6 +1,7 @@
 import { StyleSheet, TouchableOpacity, View, Text } from "react-native";
 import Logo from "../components/Logo";
 import { colors } from "../constants";
+import { Link } from "expo-router";
 
 const styles = StyleSheet.create({
   container: {
@@ -29,9 +30,11 @@ const Home = () => {
   return (
     <View style={styles.container}>
       <Logo />
-      <TouchableOpacity style={styles.getStartedButton}>
-        <Text style={styles.getStartedText}>Comenzar</Text>
-      </TouchableOpacity>
+      <Link href="/getStarted" asChild>
+        <TouchableOpacity style={styles.getStartedButton}>
+          <Text style={styles.getStartedText}>Comenzar</Text>
+        </TouchableOpacity>
+      </Link>
     </View>
   );
 };
