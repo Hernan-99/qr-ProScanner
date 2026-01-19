@@ -15,6 +15,9 @@ import {
 } from "react-native";
 
 import { colors } from "../constants";
+import { useRef } from "react";
+import { useDownloadQR } from "../hooks/useDownloadQR";
+import QrPreview from "../components/qr/QrPreview";
 
 const styles = StyleSheet.create({
   container: {
@@ -22,6 +25,7 @@ const styles = StyleSheet.create({
     padding: 24,
     gap: 16,
     backgroundColor: colors.background,
+    paddingTop: 100,
   },
 
   titleText: {
@@ -99,7 +103,13 @@ const renderItem = ({ item }) => (
 );
 
 const Generate = () => {
+  const qrRef = useRef(null);
+  const { downloadQR, loading } = useDownloadQR();
   const [value, setValue] = useState("");
+
+  const handleGenerate = async () => {
+    await downloadQR(qrRef);
+  };
 
   return (
     <KeyboardAvoidingView
@@ -127,11 +137,21 @@ const Generate = () => {
           />
 
           <TouchableOpacity
-            style={[styles.generateButton, !value && { opacity: 0.5 }]}
-            disabled={!value}
+            style={[
+              styles.generateButton,
+              (!value || loading) && { opacity: 0.5 },
+            ]}
+            disabled={!value || loading}
+            onPress={handleGenerate}
           >
-            <Text style={styles.generateTextButton}>Generar QR</Text>
+            <Text style={styles.generateTextButton}>
+              {loading ? "Generando..." : "Generar QR"}
+            </Text>
           </TouchableOpacity>
+
+          <View style={{ position: "absolute", opacity: 0 }}>
+            <QrPreview value={value} qrRef={qrRef} />
+          </View>
         </View>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
