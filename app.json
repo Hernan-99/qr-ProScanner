@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "QR-ProScanner",
+    "name": "QR ProScanner",
     "slug": "QR-ProScanner",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -11,17 +11,20 @@
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#1d1d1d"
     },
     "ios": {
       "supportsTablet": true
     },
+
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#1d1d1d"
       },
-      "edgeToEdgeEnabled": true
+
+      "edgeToEdgeEnabled": true, 
+      "package": "com.anonymous.QRProScanner"
     },
     "web": {
       "favicon": "./assets/favicon.png"
