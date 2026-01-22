@@ -91,7 +91,7 @@ const data = [
   { id: "4", value: "Se descargara automaticamente en descargas" },
   {
     id: "5",
-    value: "Felicidades, creaste tu QR. Revisa la carpeta de descargas ",
+    value: "Felicidades, creaste tu QR. Revisa la carpeta de descargas",
   },
 ];
 
